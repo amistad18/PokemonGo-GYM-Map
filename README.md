@@ -6,6 +6,8 @@
 
 For general support, join [our discord server](https://discord.gg/uAmEkcu).
 
+For feature requests go to, [our feathub page](http://feathub.com/PokemonGoMap/PokemonGo-Map).
+
 Live visualization of all the pokemon (with option to show gyms and pokestops) in your area. This is a proof of concept that we can load all the pokemon visible nearby given a location. Currently runs on a Flask server displaying Google Maps with markers on it.
 
 Features: 
@@ -16,7 +18,7 @@ Features:
 * Multithreaded mode
 * Filters
 * Independent worker threads (many can be used simulatenously to quickly generate a livemap of a huge geographical area)
-* Localization (en, fr, pt_br, de, ru, zh_tw, zh_cn, zh_hk)
+* Localization (en, fr, pt_br, de, ru, ja, zh_tw, zh_cn, zh_hk)
 * DB storage (sqlite or mysql) of all found pokemon
 * Incredibly fast, efficient searching algorithm (compared to everything else available)
 
