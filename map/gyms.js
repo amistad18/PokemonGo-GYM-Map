@@ -56,7 +56,8 @@ function initMap() {
     }
     function l() {
         function e(e, t) {
-            return $(t).data('percentage') > $(e).data('percentage') ? 1 : - 1
+            return $(t).data('percentage') * 10 > $(e).data('percentage') * 10 ? 1 : - 1
+			// not sure why, but if there is less than 10%, this gym is at the first place, apperently 7.5 is more than 60 :) ... multiple by 10 fixes this
         }
         for (var t = C.length, a = {
             0: 0,
