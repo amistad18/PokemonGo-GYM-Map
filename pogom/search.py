@@ -248,6 +248,13 @@ def search_worker_thread(args, account, search_items_queue, parse_lock, encrypti
                         time.sleep(sleep_time)
                         continue
 
+                    if response_dict['status_code'] == 3:
+                        log.error('Banned')
+                        log.debug('Banned')
+                        failed_total += 1
+                        time.sleep(sleep_time + 99999)
+                        continue
+
                     # Got the response, lock for parsing and do so (or fail, whatever)
                     with parse_lock:
                         try:
