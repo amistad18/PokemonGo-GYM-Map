@@ -317,7 +317,9 @@ body {
     r: 8
 }
 
-.overlay .dot.hovered {
+.overlay .dot.hovered,
+.overlay .dot.highlight {
+	cursor: pointer;
     r: 8
 }
 

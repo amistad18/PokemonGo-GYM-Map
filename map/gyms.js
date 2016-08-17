@@ -199,9 +199,9 @@ function initMap() {
                 }).attr(i).attr('id', function (e) {
                     return e.id.substring(0, 32)
                 }).on('mouseover', function (e) {
-                    $('#dot-' + e.id.substring(0, 32)).addClass('highlight')
+                    highlight(e.id.substring(0, 32))
                 }).on('mouseout', function (e) {
-                    $('#dot-' + e.id.substring(0, 32)).removeClass('highlight')
+					remove_highlight(e.id.substring(0, 32))
                 });
                 var l = {
                     cx: function (e, t) {
@@ -219,21 +219,32 @@ function initMap() {
                 }).attr('id', function (e) {
                     return 'dot-' + e.id.substring(0, 32)
                 }).on('mouseover', function (e) {
-                    v(e, $(this))
-                }).on('mouseout', function () {
-                    h($(this))
+					highlight(e.id.substring(0, 32))
+                }).on('mouseout', function (e) {
+					remove_highlight(e.id.substring(0, 32))
                 })
             }
         },
         w.setMap(T)
     }
-    function v(e, t) {
-        t.addClass('hovered'),
-        console.log(e)
+    function highlight(gym_id) {
+		$('#dot-' + gym_id).addClass('highlight')
+		$({r:$('#dot-' + gym_id).attr('r')}).animate(
+			{r: 8},
+			{duration:200, step:function(now){$('#dot-' + gym_id).attr('r', now);}}
+		);
+		$('#' + gym_id).addClass('highlight')
     }
-    function h(e) {
-        e.removeClass('hovered')
+
+    function remove_highlight(gym_id) {
+		$('#dot-' + gym_id).removeClass('highlight')
+		$({r:$('#dot-' + gym_id).attr('r')}).animate(
+			{r: 2},
+			{duration:200, step:function(now){$('#dot-' + gym_id).attr('r', now);}}
+		);
+		$('#' + gym_id).removeClass('highlight')
     }
+
     var T,
     w,
     b,
