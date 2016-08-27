@@ -324,10 +324,11 @@ body {
 }
 
 .panels {
+	height: auto;
+	max-height: 88%;
     position: absolute;
     top: 1rem;
     right: 1rem;
-    bottom: 10rem;
     overflow: hidden
 }
 
