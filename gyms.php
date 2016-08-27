@@ -16,6 +16,9 @@ ini_set('max_execution_time', 30);
 		// var_dump( $after_date );
 		$get_all_gyms = $db->prepare( "SELECT * FROM gym WHERE `last_modified` > '".$after_date."'" );
 	}
+	elseif( isset( $_GET['gym_id'] ) && !empty( $_GET['gym_id'] ) ){
+		$get_all_gyms = $db->prepare( "SELECT * FROM gym WHERE `gym_id` LIKE :gym_id" ); //'".$_GET['gym_id']."'"
+	}
 	else {
 		$get_all_gyms = $db->prepare( "SELECT * FROM gym" );
 	}
@@ -29,8 +32,13 @@ ini_set('max_execution_time', 30);
 	if( ! $last_modified ){
 		// var_dump( $last_modified->errorInfo() );
 	}
-
-	$all_gyms_query = $get_all_gyms->execute();
+	
+	if( isset( $_GET['gym_id'] ) && !empty( $_GET['gym_id'] ) ){
+		$all_gyms_query = $get_all_gyms->execute( array( 'gym_id' => $_GET['gym_id'] . '%' ));
+	}
+	else {
+		$all_gyms_query = $get_all_gyms->execute();
+	}
 	$last_modified_query = $last_modified->execute();
 
 	if( $all_gyms_query && $last_modified_query ){
@@ -70,7 +78,8 @@ ini_set('max_execution_time', 30);
 					$gym['gym_points'],
 					$last_modified,
 					$gym_name,
-					$timestamp
+					$timestamp,
+					$gym['guard_pokemon_id']
 				);
 
 			}

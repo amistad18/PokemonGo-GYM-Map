@@ -222,6 +222,8 @@ function initMap() {
 					highlight(e.id.substring(0, 32))
                 }).on('mouseout', function (e) {
 					remove_highlight(e.id.substring(0, 32))
+                }).on('click', function(e) {
+					// show_gym_details(e.id.substring(0, 32));
                 })
             }
         },
@@ -244,6 +246,21 @@ function initMap() {
 		);
 		$('#' + gym_id).removeClass('highlight')
     }
+
+    function show_gym_details(gym_id) {
+		$.getJSON('gyms.php?gym_id=' + gym_id, function (gyms) {
+            console.log(gyms)
+            var gym = gyms['gyms'][0];
+			console.log(gym)
+			$('.gym-details .team_name').text(L[gym[3]]);
+			$('.gym-details .team_logo').attr('src', 'map/team-'+L[gym[3]]+'-vector.svg');
+			$('.gym-details .gym_name').text(gym[6]);
+			$('.gym-details .gym_lv').text(what_gym_lv(gym[4]));
+			$('.gym-details .gym_prestige').text(gym[4]);
+			$('.gym-details .gym_pokemons .cp').text(gym[8]);
+			$('.gym-details .last_changes').text(gym[7]);
+        })
+	}
 
     var T,
     w,

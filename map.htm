@@ -166,6 +166,34 @@ style.firebugResetStyles {
 		</div>
 
 		<div class="panels">
+			<div class="gym-details hidden" style="display: none;">
+				<div>
+					<center>
+						<div>
+							<!-- <b style='color:rgba(${gymColor[teamId]})'>${teamName}</b><br> -->
+							<b class="team_name">${teamName}</b><br>
+							<img class="team_logo" height='70px' style='padding: 5px;' src='map/team-instinct-vector.svg'>
+						</div>
+						<div>
+							<span class="gym_name">${details['name']}</span>
+						</div>
+						<div>
+							Poziom: <span class="gym_lv">${gymLevel}</span> | Prestiż: <span class="gym_prestige">${gymPoints}</span>
+						</div>
+						<div>
+							<div class="gym_pokemons">
+								<span class="gym-member" title="${members[i].pokemon_name} | ${members[i].trainer_name} (Lvl ${members[i].trainer_level})">
+									<i class="pokemon-sprite n${members[i].pokemon_id}"></i>
+									<span class="cp team-${teamId}">${members[i].pokemon_cp}</span>
+								</span>
+							</div>
+						</div>
+						<div>
+							Bez zmian od: <span class="last_changes">${lastScannedStr}</span>
+						</div>
+					</center>
+				</div>
+			</div>
 			<div class="info hidden">
 				<ul class="team-stats">
 					<li class="team-1">
