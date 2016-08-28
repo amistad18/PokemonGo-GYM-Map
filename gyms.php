@@ -6,7 +6,8 @@ ini_set('max_execution_time', 30);
 	$gyms_array_to_encode = array();
 	$json_encode_output = '';
 
-	$db = new PDO( "sqlite:pogom.db" );
+	//$db = new PDO( "sqlite:pogom.db" );
+	$db = new PDO( 'mysql:host=localhost;dbname=gymmap',	'gymmap',	'gymmappass' );
 
 	if( isset( $_GET['after'] ) && !empty( $_GET['after'] ) ){
 		$after_timestamp = (int) $_GET['after'] + 1;
